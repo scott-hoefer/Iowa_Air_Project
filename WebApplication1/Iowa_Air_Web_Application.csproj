@@ -182,7 +182,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Search.aspx" />
+    <Content Include="Employee.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Forgot.aspx" />
@@ -366,12 +366,12 @@
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Search.aspx.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
+    <Compile Include="Employee.aspx.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Search.aspx.designer.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
+    <Compile Include="Employee.aspx.designer.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
