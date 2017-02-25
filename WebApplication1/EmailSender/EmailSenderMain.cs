@@ -6,10 +6,10 @@ namespace WebApplication1.EmailSender
     public class EmailSenderMain
     {
 
-        static MailAddress fromAddress = new MailAddress("ben@contoso.com");
-        static MailAddress toAddress = new MailAddress("Jane@contoso.com");
+        MailAddress fromAddress = new MailAddress("ben@contoso.com");
+        MailAddress toAddress = new MailAddress("Jane@contoso.com");
 
-        static SmtpClient client = new SmtpClient();
+        SmtpClient client = new SmtpClient();
         client.Port = 25;
         client.Host = "smtp.gmail.com";
         client.EnableSsl = true;
