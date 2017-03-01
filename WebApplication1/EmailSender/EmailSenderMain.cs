@@ -5,7 +5,7 @@ namespace WebApplication1.EmailSender
 {
     public class EmailSenderMain
     {
-
+        /*
         MailAddress fromAddress = new MailAddress("ben@contoso.com");
         MailAddress toAddress = new MailAddress("Jane@contoso.com");
 
@@ -24,6 +24,7 @@ namespace WebApplication1.EmailSender
         mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
         client.Send(mm);
+        */
     }
 }
 

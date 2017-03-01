@@ -27,6 +27,7 @@ namespace WebApplication1.Account
                 if (result.Succeeded)
                 {
                     successPanel.Visible = true;
+                    //add user to sqldatabase
                     return;
                 }
             }
