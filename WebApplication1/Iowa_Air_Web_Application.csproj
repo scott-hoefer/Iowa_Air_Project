@@ -182,12 +182,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AdminPage.aspx" />
     <Content Include="App_Data\dbo.Table.sql" />
     <Content Include="App_Data\IowaAirDatabase.mdf" />
     <Content Include="App_Data\IowaAirDatabase_log.ldf">
       <DependentUpon>IowaAirDatabase.mdf</DependentUpon>
     </Content>
-    <Content Include="Employee.aspx" />
+    <Content Include="Employee\EmployeePage.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Forgot.aspx" />
@@ -215,6 +216,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Admin\Web.config" />
+    <Content Include="Employee\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\logo_v2.png" />
     <Content Include="Registration.aspx" />
@@ -371,14 +374,21 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="EmailSender\EmailSenderMain.cs" />
-    <Compile Include="Employee.aspx.cs">
-      <DependentUpon>Employee.aspx</DependentUpon>
+    <Compile Include="Admin\AdminPage.aspx.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Employee.aspx.designer.cs">
-      <DependentUpon>Employee.aspx</DependentUpon>
+    <Compile Include="Admin\AdminPage.aspx.designer.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="EmailSender\EmailSenderMain.cs" />
+    <Compile Include="Employee\EmployeePage.aspx.cs">
+      <DependentUpon>EmployeePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\EmployeePage.aspx.designer.cs">
+      <DependentUpon>EmployeePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
