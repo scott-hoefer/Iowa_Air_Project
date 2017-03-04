@@ -395,7 +395,6 @@
     <Compile Include="EmailConfirmed.aspx.designer.cs">
       <DependentUpon>EmailConfirmed.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EmailSender\EmailSenderMain.cs" />
     <Compile Include="Employee\EmployeePage.aspx.cs">
       <DependentUpon>EmployeePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

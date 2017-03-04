@@ -7,6 +7,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace WebApplication1
 {
@@ -69,13 +70,19 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = HttpContext.Current.User;
+            var userId = user.Identity.GetUserId();
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 adminLink.Visible = true;
             }
-            if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("Employee") || HttpContext.Current.User.IsInRole("Manager"))
+            if (user.IsInRole("Admin") || user.IsInRole("Employee") || user.IsInRole("Manager"))
             {
-                employeeLink.Visible = true;
+                if (manager.IsEmailConfirmed(userId))
+                {
+                    employeeLink.Visible = true;
+                }
             }
         }
 
