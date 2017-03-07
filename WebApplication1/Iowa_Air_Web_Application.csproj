@@ -188,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\AdminPage.aspx" />
+    <Content Include="empAcctCreation.aspx" />
     <Content Include="App_Data\dbo.Table.sql" />
     <Content Include="App_Data\IowaAirDatabase.mdf" />
     <Content Include="App_Data\IowaAirDatabase_log.ldf">
@@ -386,6 +387,13 @@
     </Compile>
     <Compile Include="Admin\AdminPage.aspx.designer.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="empAcctCreation.aspx.cs">
+      <DependentUpon>empAcctCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="empAcctCreation.aspx.designer.cs">
+      <DependentUpon>empAcctCreation.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="EmailConfirmed.aspx.cs">

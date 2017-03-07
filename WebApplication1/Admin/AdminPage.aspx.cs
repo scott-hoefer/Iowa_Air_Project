@@ -1,53 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using WebApplication1.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System.Web.Mail;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace WebApplication1.Admin
 {
-    public partial class AdminPage : Page
+    public partial class AdminPage1 : System.Web.UI.Page
     {
-        protected void CreateEmployeeUser_Click(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
-            var user = new ApplicationUser() { UserName = EmployeeEmail.Text, Email = EmployeeEmail.Text };
-            IdentityResult result = manager.Create(user, EmployeePassword.Text);
-            if (result.Succeeded)
-            {
 
-                SendMail();
-                // assign the default role of Employee
-                ApplicationDbContext context = new ApplicationDbContext();
-                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-                var addRole = UserManager.AddToRole(user.Id, "Employee");
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                string code = manager.GenerateEmailConfirmationToken(user.Id);
-                string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
-                manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
-
-                signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
-                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-
-            }
-            else
-            {
-                ErrorMessage.Text = result.Errors.FirstOrDefault();
-            }
         }
-
-        public void SendMail()
+        protected void SendEmployeeLink_Click(object sender, EventArgs e)
         {
             string pGmailEmail = "iowaair06A@gmail.com";
             string pGmailPassword = "Pword1234!";
             string pTo = EmployeeEmail.Text; //abc@domain.com
-            string pSubject = "Employee Email Confirmation";
+            string pSubject = "Employee Account Creation";
+            //string pBody = "Please click " + '<a runat='server' href='localhost:49384/EmailConfirmed'>Here</a>' + " to confirm your email."; //Body
             MailFormat pFormat = MailFormat.Html; //Text Message
             string pAttachmentPath = string.Empty; //No Attachments
 
@@ -89,7 +62,7 @@ namespace WebApplication1.Admin
             myMail.To = pTo;
             myMail.Subject = pSubject;
             myMail.BodyFormat = pFormat;
-            myMail.Body = "Please click <a href=\"http://localhost:49384/EmailConfirmed.aspx\">here</a> to confirm your Employee email.";
+            myMail.Body = "Please click <a href=\"http://localhost:49384/empAcctCreation.aspx\">here</a> to be redirected to the Employee Account Creation Page, where you will set up your log in info.";
             if (pAttachmentPath.Trim() != "")
             {
                 MailAttachment MyAttachment =
@@ -100,6 +73,8 @@ namespace WebApplication1.Admin
 
             SmtpMail.SmtpServer = "smtp.gmail.com:465";
             SmtpMail.Send(myMail);
+
+            emailSentConfirmation.Visible = true;
         }
     }
 }

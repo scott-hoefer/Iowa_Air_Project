@@ -79,9 +79,12 @@ namespace WebApplication1
             }
             if (user.IsInRole("Admin") || user.IsInRole("Employee") || user.IsInRole("Manager"))
             {
-                if (manager.IsEmailConfirmed(userId))
+                if (userId != null)
                 {
-                    employeeLink.Visible = true;
+                    if (manager.IsEmailConfirmed(userId))
+                    {
+                        employeeLink.Visible = true;
+                    }
                 }
             }
         }

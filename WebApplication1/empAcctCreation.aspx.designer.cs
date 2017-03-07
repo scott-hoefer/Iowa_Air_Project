@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.Admin {
+namespace WebApplication1 {
     
     
-    public partial class AdminPage1 {
+    public partial class empAcctCreation {
         
         /// <summary>
         /// ErrorMessage control.
@@ -22,30 +22,30 @@ namespace WebApplication1.Admin {
         protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
-        /// EmployeeEmail control.
+        /// newEmployeeEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EmployeeEmail;
+        protected global::System.Web.UI.WebControls.TextBox newEmployeeEmail;
         
         /// <summary>
-        /// emailSentConfirmation control.
+        /// newEmployeePassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label emailSentConfirmation;
+        protected global::System.Web.UI.WebControls.TextBox newEmployeePassword;
         
         /// <summary>
-        /// newEmpBtn control.
+        /// newConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button newEmpBtn;
+        protected global::System.Web.UI.WebControls.TextBox newConfirmPassword;
     }
 }
