@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mail;
@@ -10,6 +11,7 @@ namespace WebApplication1.Admin
 {
     public partial class AdminPage1 : System.Web.UI.Page
     {
+        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-WebApplication1-20170209101639;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -75,6 +77,45 @@ namespace WebApplication1.Admin
             SmtpMail.Send(myMail);
 
             emailSentConfirmation.Visible = true;
+        }
+        protected void addAircraft_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            if (addAircraft.SelectedValue == "1")
+            {
+                // value 1 was selected, Boeing 777
+                cmd.CommandText = "insert into Aircraft values('"+"Boeing 777"+"' , '"+194+"' , '"+95+"' , '"+0+"')";
+                cmd.ExecuteNonQuery();
+                addSuccessful.Visible = true;
+                noSelection.Visible = false;
+            } else if (addAircraft.SelectedValue == "2") {
+                // value 2
+                cmd.CommandText = "insert into Aircraft values('"+ "Boeing 767" + "' , '"+188+"', '"+30+"', '"+0+"')";
+                cmd.ExecuteNonQuery();
+                addSuccessful.Visible = true;
+                noSelection.Visible = false;
+            } else if (addAircraft.SelectedValue == "3")
+            {
+                // value 3
+                cmd.CommandText = "insert into Aircraft values('" + "Airbus 380" + "' , '" + 557 + "', '" + 58 + "', '" + 0 + "')";
+                cmd.ExecuteNonQuery();
+                addSuccessful.Visible = true;
+                noSelection.Visible = false;
+            } else if (addAircraft.SelectedValue == "4") {
+                //value 4
+                cmd.CommandText = "insert into Aircraft values('" + "Boeing 747" + "' , '" + 328 + "', '" + 48 + "', '" + 0 + "')";
+                cmd.ExecuteNonQuery();
+                addSuccessful.Visible = true;
+                noSelection.Visible = false;
+            } else if (addAircraft.SelectedValue == "0") { 
+                // user failed to select an aircraft
+                noSelection.Visible = true;
+                addSuccessful.Visible = false;
+            }
+
+            con.Close();
         }
     }
 }
