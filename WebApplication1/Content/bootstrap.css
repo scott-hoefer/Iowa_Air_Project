@@ -4930,21 +4930,32 @@ a.list-group-item.active > .badge,
   margin-left: 3px;
 }
 
+.main {
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  text-align: center;
+  background-color: Menu;
+  
+
+}
+
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
-  color: inherit;
-  background-color: yellow; 
   text-align: center;
-255, 0.15)), 15)), cc
+  color:HighlightText;
+  background-color:flavor;
 }
 
 .jumbotron h1 {
   line-height: 1;
-  color: inherit;
+  
 }
 
 .jumbotron p {
@@ -5332,7 +5343,7 @@ a.list-group-item:focus {
 
 .panel {
   margin-bottom: 20px;
-  background-color: #ffffff;
+  background-color: none;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);

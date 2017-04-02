@@ -226,6 +226,9 @@
     <Content Include="Admin\Web.config" />
     <Content Include="Employee\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\baloon.jpeg" />
+    <Content Include="images\cornAndSky.jpg" />
+    <Content Include="images\cornAndSky2.jpg" />
     <Content Include="images\logo_v2.png" />
     <Content Include="Registration.aspx" />
     <Content Include="Scripts\bootstrap.js" />
