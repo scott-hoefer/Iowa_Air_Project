@@ -25,9 +25,9 @@
     </style>
     <div>
         
-        <p class="lead"><em>Iowa's Number One (Fake) Airline Co.</em></p>
+        <p class="lead" style="color:whitesmoke"><em>Iowa's Number One (Fake) Airline Co.</em></p>
 
-        <h1><asp:Label ID="SearchFlights" runat="server" Text="<u>Your Destination Awaits</u>"></asp:Label></h1><br />
+        <h1><asp:Label ID="SearchFlights" runat="server" Text="<u>Your Destination Awaits</u>" ForeColor="#000000"></asp:Label></h1><br />
         <asp:DropDownList ID="originCity" runat="server" Width="200px">
             <asp:ListItem Text="From" Value="0"></asp:ListItem>
             <asp:ListItem Text="Iowa City" Value="1"></asp:ListItem>
