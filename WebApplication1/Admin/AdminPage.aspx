@@ -45,9 +45,32 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Label ID="addSuccessful" runat="server" AssociatedControlId="addAircraftBtn" Text="Aircraft Successfully Added To Fleet" ForeColor="Red" Visible="false"></asp:Label>
+                <asp:Label ID="addSuccessful" runat="server" AssociatedControlId="addAircraftBtn" Text="Aircraft Successfully Added To Fleet" ForeColor="Red" Visible="false"></asp:Label><br />
                 <asp:Button ID="addAircraftBtn" runat="server" Text="Add Aircraft" OnClick="addAircraft_Click" CausesValidation="false" CssClass="btn btn-default" />
             </div>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <h4>Remove an Aircraft from the Fleet</h4>
+            <asp:Label ID="noSelectionDel" runat="server" Text="Must Select an Aircraft from the Drop Down List" ForeColor="Red" Visible="false"></asp:Label>
+            <asp:Label runat="server" AssociatedControlID="delAircraft" CssClass="col-md-2 control-label">Select Aircraft Type</asp:Label>
+            <div class="col-md-10">
+                <asp:DropDownList ID="delAircraft" runat="server" Width="200px" CssClass="form-control">
+                </asp:DropDownList>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <asp:Label ID="delSuccessful" runat="server" AssociatedControlId="delAircraftBtn" Text="Aircraft Successfully Deleted from Fleet" ForeColor="Red" Visible="false"></asp:Label><br />
+                <asp:Button ID="delAircraftBtn" runat="server" Text="Delete Aircraft" OnClick="delAircraft_Click" CausesValidation="false" CssClass="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <h4>Add a Route</h4>
         </div>
     </div>
 </asp:Content>

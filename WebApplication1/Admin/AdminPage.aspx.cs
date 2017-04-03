@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,10 +14,37 @@ namespace WebApplication1.Admin
     public partial class AdminPage1 : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-WebApplication1-20170209101639;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SqlCommand cmd;
+        SqlDataAdapter da;
+        DataTable dt;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                fillDropDel();
+                delAircraft.DataTextField.Insert(0, "Here");
+            }
 
         }
+
+        private void fillDropDel()
+        {
+            delAircraft.DataSource = getAircraftData();
+            delAircraft.DataTextField = "delData";
+            delAircraft.DataValueField = "AircraftId";
+            delAircraft.DataBind();
+        }
+
+        public DataTable getAircraftData()
+        {
+            cmd = new SqlCommand("getAircraft", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            da = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
         protected void SendEmployeeLink_Click(object sender, EventArgs e)
         {
             string pGmailEmail = "iowaair06A@gmail.com";
@@ -81,8 +110,8 @@ namespace WebApplication1.Admin
         protected void addAircraft_Click(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
+            cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
             if (addAircraft.SelectedValue == "1")
             {
                 // value 1 was selected, Boeing 777
@@ -116,6 +145,24 @@ namespace WebApplication1.Admin
             }
 
             con.Close();
+            fillDropDel();
+        }
+        protected void delAircraft_Click(object sender, EventArgs e)
+        {
+            int id;
+            String x = delAircraft.SelectedValue;
+            int.TryParse(x, out id);
+            //int.TryParse(delAircraft.SelectedValue, out id);
+            System.Diagnostics.Debug.WriteLine(id);
+            using (cmd = new SqlCommand(@"Delete from Aircraft where AircraftId = @id", con))
+            {
+                con.Open();
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                fillDropDel();
+            }
+            delSuccessful.Visible = true;
         }
     }
 }
