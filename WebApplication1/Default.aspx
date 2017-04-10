@@ -28,11 +28,11 @@
 
         <div>
              <asp:Label ID="searchResultsLbl" runat="server" Visible="false" AssociatedControlID="searchResultsGrd" >Search Results</asp:Label>
-                 <asp:GridView ID="searchResultsGrd" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Visible="false" HorizontalAlign="Center">
+                 <asp:GridView ID="searchResultsGrd" runat="server" CellPadding="10" ForeColor="#333333" GridLines="None" Visible="false" HorizontalAlign="Center">
                    <AlternatingRowStyle BackColor="White" />
                    <EditRowStyle BackColor="#2461BF" />
                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                   <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                   <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"  HorizontalAlign="Center"/>
                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                    <RowStyle BackColor="#EFF3FB"/>
                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -44,6 +44,7 @@
         </div>
 
         <h1><asp:Label ID="SearchFlights" runat="server" Text="<u>Your Destination Awaits</u>" ForeColor="#000000"></asp:Label></h1><br />
+        <asp:Label ID="warningLbl" runat="server" Text="<u>Origin City must be Different than Destination</u>" ForeColor="Red" Visible="false"></asp:Label><br />
         <asp:DropDownList ID="originCity" runat="server" Width="200px" Height="30px">
             <asp:ListItem Text="From" Value="0"></asp:ListItem>
             <asp:ListItem Text="Iowa City" Value="1"></asp:ListItem>

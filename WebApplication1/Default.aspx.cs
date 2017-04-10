@@ -29,10 +29,15 @@ namespace WebApplication1
             {
                 reDay = (int)returnDay.DayOfWeek;
             }
+            // destination cannot be same as departure city
+            if (originCity.SelectedItem.Text == destinationCity.SelectedItem.Text)
+            {
+                warningLbl.Visible = true;
+            }
             //search the DB
             SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-WebApplication1-20170209101639;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("Select FlightId, Origin, Layover, Destination, Price, DepartTime, LayoverTime, ArrivalTime from Routes where Origin= '"+originCity.SelectedItem.Text+"' and Destination='"+destinationCity.SelectedItem.Text+"' ", con);
+            SqlDataAdapter da = new SqlDataAdapter("Select FlightId as 'Flight No.', Origin as 'Departure City', Layover, Destination, Price, DepartTime as 'Departure Time', LayoverTime as 'Layover Times', ArrivalTime as 'Arrival Time' from Routes where Origin= '"+originCity.SelectedItem.Text+"' and Destination='"+destinationCity.SelectedItem.Text+"' ", con);
             DataSet ds = new DataSet();
             da.Fill(ds);
             searchResultsGrd.DataSource = ds;
