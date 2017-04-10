@@ -76,6 +76,7 @@ namespace WebApplication1
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 adminLink.Visible = true;
+                employeeLink.Visible = true;
             }
             if (user.IsInRole("Admin") || user.IsInRole("Employee") || user.IsInRole("Manager"))
             {

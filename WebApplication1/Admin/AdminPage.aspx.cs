@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
@@ -21,23 +22,45 @@ namespace WebApplication1.Admin
         {
             if (!Page.IsPostBack)
             {
-                fillDropDel();
-                delAircraft.DataTextField.Insert(0, "Here");
+                fillDrops();
+                updateDB();
             }
-
         }
 
-        private void fillDropDel()
+
+        protected void OnPaging(object sender, GridViewPageEventArgs e)
         {
+            routesGridView.PageIndex = e.NewPageIndex;
+            routesGridView.DataBind();
+        }
+
+        private void fillDrops()
+        {
+            // fill drop Down List for delete aircraft
             delAircraft.DataSource = getAircraftData();
             delAircraft.DataTextField = "delData";
             delAircraft.DataValueField = "AircraftId";
             delAircraft.DataBind();
+            // fill drop down list for add route
+            routeAircraft.DataSource = getAircraftData();
+            routeAircraft.DataTextField = "delData";
+            routeAircraft.DataValueField = "AircraftId";
+            routeAircraft.DataBind();
         }
 
         public DataTable getAircraftData()
         {
             cmd = new SqlCommand("getAircraft", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            da = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public DataTable getRouteData()
+        {
+            cmd = new SqlCommand("getRoutes", con);
             cmd.CommandType = CommandType.StoredProcedure;
             da = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -107,6 +130,21 @@ namespace WebApplication1.Admin
 
             emailSentConfirmation.Visible = true;
         }
+
+        protected void updateDB()
+        {
+            con.Open();
+            SqlCommand cmd2;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            String sql = "Update Aircraft set InUse='" + 0 + "' where AircraftId NOT IN (SELECT AircraftId FROM Routes)";
+            cmd2 = new SqlCommand(sql, con);
+            adapter.UpdateCommand = new SqlCommand(sql, con);
+            adapter.UpdateCommand.ExecuteNonQuery();
+            cmd2.Dispose();
+            con.Close();
+            fillDrops();
+        }
+
         protected void addAircraft_Click(object sender, EventArgs e)
         {
             con.Open();
@@ -145,24 +183,123 @@ namespace WebApplication1.Admin
             }
 
             con.Close();
-            fillDropDel();
+            fillDrops();
         }
         protected void delAircraft_Click(object sender, EventArgs e)
         {
             int id;
             String x = delAircraft.SelectedValue;
             int.TryParse(x, out id);
-            //int.TryParse(delAircraft.SelectedValue, out id);
-            System.Diagnostics.Debug.WriteLine(id);
+            //System.Diagnostics.Debug.WriteLine(id);
             using (cmd = new SqlCommand(@"Delete from Aircraft where AircraftId = @id", con))
             {
                 con.Open();
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                fillDropDel();
+                fillDrops();
             }
             delSuccessful.Visible = true;
+        }
+        protected void addRoute_Click(object sender, EventArgs e)
+        {
+            int price;
+            int.TryParse(priceTxtBox.Text, out price);
+            int plane;
+            int.TryParse(routeAircraft.SelectedItem.Value, out plane);
+            int m, t, w, th, f, sa, su;
+            // mondays
+            if (frequency.Items[0].Selected)
+            {
+                m = 1;
+            }
+            else
+            {
+                m = 0;
+            }
+            //tues
+            if (frequency.Items[1].Selected)
+            {
+                t = 1;
+            }
+            else
+            {
+                t = 0;
+            }
+            //wednesdays
+            if (frequency.Items[2].Selected)
+            {
+                w = 1;
+            }
+            else
+            {
+                w = 0;
+            }
+            //thur
+            if (frequency.Items[3].Selected)
+            {
+                th = 1;
+            }
+            else
+            {
+                th = 0;
+            }
+            // fri
+            if (frequency.Items[4].Selected)
+            {
+                f = 1;
+            }
+            else
+            {
+                f = 0;
+            }
+            // sat
+            if (frequency.Items[5].Selected)
+            {
+                sa = 1;
+            }
+            else
+            {
+                sa = 0;
+            }
+            // sun
+            if (frequency.Items[6].Selected)
+            {
+                su = 1;
+            }
+            else
+            {
+                su = 0;
+            }
+            if (layoverCity.SelectedValue == "0")
+            {
+                using (cmd = new SqlCommand(@"insert into Routes values('" + plane + "' , '" + originCity.SelectedItem.Text + "' , '" + DBNull.Value + "' , '" + destinationCity.SelectedItem.Text + "' , '" + m + "' , '" + t + "' , '" + w + "' , '" + th + "' , '" + f + "' , '" + sa + "' , '" + su + "' , '" + price + "' , '" + departTimeTxtBox.Text + "' , '" + DBNull.Value + "' , '" + arrivalTimeTxtBox.Text + "' ,'" + 0 + "' , '" + 0 + "')", con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            else
+            {
+                using (cmd = new SqlCommand(@"insert into Routes values('" + plane + "' , '" + originCity.SelectedItem.Text + "' , '" + layoverCity.SelectedItem.Text + "' , '" + destinationCity.SelectedItem.Text + "' , '" + m + "' , '" + t + "' , '" + w + "' , '" + th + "' , '" + f + "' , '" + sa + "' , '" + su + "' , '" + price + "' , '" + departTimeTxtBox.Text + "' , '" + layoverTimeTxtBox.Text + "' , '" + arrivalTimeTxtBox.Text + "' , '" + 0 + "' , '" + 0 + "')", con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            con.Open();
+            SqlCommand cmd2;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            String sql = "Update Aircraft set InUse='" + 1 + "' where AircraftId= '" + plane + "'";
+            cmd2 = new SqlCommand(sql, con);
+            adapter.UpdateCommand = new SqlCommand(sql, con);
+            adapter.UpdateCommand.ExecuteNonQuery();
+            cmd2.Dispose();
+            con.Close();
+            fillDrops();
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

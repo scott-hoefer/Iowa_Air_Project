@@ -48,7 +48,7 @@
         <asp:TextBox type="date" ID="departDate" runat="server" Height="30px"></asp:TextBox>
         <asp:Label ID="returnLbl" runat="server" AssociatedControlID="returnDate" Text="Return: " />
         <asp:TextBox type="date" ID="returnDate" placeholder="Return Date" runat="server" Height="30px"></asp:TextBox><br /><br />
-        <asp:Button ID="searchBtn" runat="server" Text="Search Flights" />
+        <asp:Button ID="searchBtn" runat="server" Text="Search Flights" CssClass="btn btn-default" />
     </div>
     <br />
     <br />
