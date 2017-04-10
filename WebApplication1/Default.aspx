@@ -26,6 +26,23 @@
         
         <p class="lead" style="color:whitesmoke"><em>Iowa's Number One (Fake) Airline Co.</em></p>
 
+        <div>
+             <asp:Label ID="searchResultsLbl" runat="server" Visible="false" AssociatedControlID="searchResultsGrd" >Search Results</asp:Label>
+                 <asp:GridView ID="searchResultsGrd" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Visible="false" HorizontalAlign="Center">
+                   <AlternatingRowStyle BackColor="White" />
+                   <EditRowStyle BackColor="#2461BF" />
+                   <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                   <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                   <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                   <RowStyle BackColor="#EFF3FB"/>
+                   <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                   <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                   <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                   <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                   <SortedDescendingHeaderStyle BackColor="#4870BE" />
+              </asp:GridView>
+        </div>
+
         <h1><asp:Label ID="SearchFlights" runat="server" Text="<u>Your Destination Awaits</u>" ForeColor="#000000"></asp:Label></h1><br />
         <asp:DropDownList ID="originCity" runat="server" Width="200px" Height="30px">
             <asp:ListItem Text="From" Value="0"></asp:ListItem>
@@ -48,7 +65,7 @@
         <asp:TextBox type="date" ID="departDate" runat="server" Height="30px"></asp:TextBox>
         <asp:Label ID="returnLbl" runat="server" AssociatedControlID="returnDate" Text="Return: " />
         <asp:TextBox type="date" ID="returnDate" placeholder="Return Date" runat="server" Height="30px"></asp:TextBox><br /><br />
-        <asp:Button ID="searchBtn" runat="server" Text="Search Flights" CssClass="btn btn-default" />
+        <asp:Button ID="searchBtn" runat="server" Text="Search Flights" CssClass="btn btn-default" OnClick="searchBtn_Click"/>
     </div>
     <br />
     <br />
