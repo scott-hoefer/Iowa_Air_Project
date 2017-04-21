@@ -28,7 +28,7 @@
 
         <div>
              <asp:Label ID="searchResultsLbl" runat="server" Visible="false" AssociatedControlID="searchResultsGrd" >Search Results</asp:Label>
-                 <asp:GridView ID="searchResultsGrd" runat="server" CellPadding="10" ForeColor="#333333" GridLines="None" Visible="false" HorizontalAlign="Center">
+                 <asp:GridView ID="searchResultsGrd" runat="server" CellPadding="10" ForeColor="#333333" GridLines="None" Visible="false" HorizontalAlign="Center" AutoGenerateSelectButton="True" OnSelectedIndexChanged="searchResultsGrd_SelectedIndexChanged">
                    <AlternatingRowStyle BackColor="White" />
                    <EditRowStyle BackColor="#2461BF" />
                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -42,9 +42,27 @@
                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
               </asp:GridView>
         </div>
+        <br />
+        <div>
+        <asp:Label ID="returnFlightGrdLbl" runat="server" Visible="false" AssociatedControlID="returnFlightGrd" >Return Flights</asp:Label>
+            <asp:GridView ID="returnFlightGrd" runat="server" CellPadding="10" ForeColor="#333333" GridLines="None" Visible="false" HorizontalAlign="Center" AutoGenerateSelectButton="True" OnSelectedIndexChanged="returnFlightGrd_SelectedIndexChanged">
+            <AlternatingRowStyle BackColor="White" />
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"  HorizontalAlign="Center"/>
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB"/>
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+        </div>
 
         <h1><asp:Label ID="SearchFlights" runat="server" Text="<u>Your Destination Awaits</u>" ForeColor="#000000"></asp:Label></h1><br />
         <asp:Label ID="warningLbl" runat="server" Text="<u>Origin City must be Different than Destination</u>" ForeColor="Red" Visible="false"></asp:Label><br />
+        <asp:Label ID="noDepartDateLbl" runat="server" Text="<u>Must Select a Departure Date</u>" ForeColor="Red" Visible="false"></asp:Label><br />
         <asp:DropDownList ID="originCity" runat="server" Width="200px" Height="30px">
             <asp:ListItem Text="From" Value="0"></asp:ListItem>
             <asp:ListItem Text="Iowa City" Value="1"></asp:ListItem>
@@ -62,6 +80,7 @@
             <asp:ListItem Text="New York" Value="5"></asp:ListItem>
         </asp:DropDownList>
         <asp:TextBox ID="numPassengers" placeholder="Number of Passengers" runat="server" Height="30px"></asp:TextBox><br /><br />
+        <asp:Label ID="Label1" runat="server" Text="<u>Leave Return Date Empty for One Way Flights</u>" ForeColor="Black" Font-Size="Medium"></asp:Label><br /><br />
         <asp:Label ID="departLbl" runat="server" AssociatedControlID="departDate" Text="Departure: " />
         <asp:TextBox type="date" ID="departDate" runat="server" Height="30px"></asp:TextBox>
         <asp:Label ID="returnLbl" runat="server" AssociatedControlID="returnDate" Text="Return: " />

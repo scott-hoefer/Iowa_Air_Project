@@ -166,13 +166,22 @@ namespace WebApplication1.Admin {
         protected global::System.Web.UI.WebControls.CheckBoxList frequency;
         
         /// <summary>
-        /// priceTxtBox control.
+        /// priceFCTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox priceTxtBox;
+        protected global::System.Web.UI.WebControls.TextBox priceFCTxtBox;
+        
+        /// <summary>
+        /// priceEconTxtBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox priceEconTxtBox;
         
         /// <summary>
         /// departTimeTxtBox control.

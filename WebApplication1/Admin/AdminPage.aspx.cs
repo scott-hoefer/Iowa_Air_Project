@@ -203,8 +203,9 @@ namespace WebApplication1.Admin
         }
         protected void addRoute_Click(object sender, EventArgs e)
         {
-            int price;
-            int.TryParse(priceTxtBox.Text, out price);
+            int priceFC, priceEcon;
+            int.TryParse(priceFCTxtBox.Text, out priceFC);
+            int.TryParse(priceEconTxtBox.Text, out priceEcon);
             int plane;
             int.TryParse(routeAircraft.SelectedItem.Value, out plane);
             int m, t, w, th, f, sa, su;
@@ -273,7 +274,7 @@ namespace WebApplication1.Admin
             }
             if (layoverCity.SelectedValue == "0")
             {
-                using (cmd = new SqlCommand(@"insert into Routes values('" + plane + "' , '" + originCity.SelectedItem.Text + "' , '" + DBNull.Value + "' , '" + destinationCity.SelectedItem.Text + "' , '" + m + "' , '" + t + "' , '" + w + "' , '" + th + "' , '" + f + "' , '" + sa + "' , '" + su + "' , '" + price + "' , '" + departTimeTxtBox.Text + "' , '" + DBNull.Value + "' , '" + arrivalTimeTxtBox.Text + "' ,'" + 0 + "' , '" + 0 + "')", con))
+                using (cmd = new SqlCommand(@"insert into Routes values('" + plane + "' , '" + originCity.SelectedItem.Text + "' , '" + DBNull.Value + "' , '" + destinationCity.SelectedItem.Text + "' , '" + m + "' , '" + t + "' , '" + w + "' , '" + th + "' , '" + f + "' , '" + sa + "' , '" + su + "' , '" + priceFC + "' , '" + priceEcon + "' , '" + departTimeTxtBox.Text + "' , '" + DBNull.Value + "' , '" + arrivalTimeTxtBox.Text + "' ,'" + 0 + "' , '" + 0 + "')", con))
                 {
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -282,7 +283,7 @@ namespace WebApplication1.Admin
             }
             else
             {
-                using (cmd = new SqlCommand(@"insert into Routes values('" + plane + "' , '" + originCity.SelectedItem.Text + "' , '" + layoverCity.SelectedItem.Text + "' , '" + destinationCity.SelectedItem.Text + "' , '" + m + "' , '" + t + "' , '" + w + "' , '" + th + "' , '" + f + "' , '" + sa + "' , '" + su + "' , '" + price + "' , '" + departTimeTxtBox.Text + "' , '" + layoverTimeTxtBox.Text + "' , '" + arrivalTimeTxtBox.Text + "' , '" + 0 + "' , '" + 0 + "')", con))
+                using (cmd = new SqlCommand(@"insert into Routes values('" + plane + "' , '" + originCity.SelectedItem.Text + "' , '" + layoverCity.SelectedItem.Text + "' , '" + destinationCity.SelectedItem.Text + "' , '" + m + "' , '" + t + "' , '" + w + "' , '" + th + "' , '" + f + "' , '" + sa + "' , '" + su + "' , '" + priceFC + "' , '" + priceEcon + "' , '" + departTimeTxtBox.Text + "' , '" + layoverTimeTxtBox.Text + "' , '" + arrivalTimeTxtBox.Text + "' , '" + 0 + "' , '" + 0 + "')", con))
                 {
                     con.Open();
                     cmd.ExecuteNonQuery();

@@ -3,7 +3,7 @@
 
 
 
-        <h1><%: Title %>.</h1>
+        <h1>Administrative Options.</h1>
     
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
@@ -137,9 +137,16 @@
         </div>
 
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="priceTxtBox" CssClass="col-md-2 control-label">Price</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="priceFCTxtBox" CssClass="col-md-2 control-label">Price First Class</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="priceTxtBox" CssClass="form-control" Width="200px" />
+                <asp:TextBox runat="server" ID="priceFCTxtBox" CssClass="form-control" Width="200px" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="priceEconTxtBox" CssClass="col-md-2 control-label">Price Economy</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="priceEconTxtBox" CssClass="form-control" Width="200px" />
             </div>
         </div>
 
@@ -178,7 +185,7 @@
         <div class="form-group">
             <h4>Update Routes</h4>
         </div>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IowaAirDB %>" DeleteCommand="DELETE FROM [Routes] WHERE [FlightId] = @FlightId" InsertCommand="INSERT INTO [Routes] ([AircraftId], [Origin], [Layover], [Destination], [M], [T], [W], [TH], [F], [SA], [SU], [Price], [DepartTime], [LayoverTime], [ArrivalTime], [SeatsTakenFC], [SeatsTakenEcon]) VALUES (@AircraftId, @Origin, @Layover, @Destination, @M, @T, @W, @TH, @F, @SA, @SU, @Price, @DepartTime, @LayoverTime, @ArrivalTime, @SeatsTakenFC, @SeatsTakenEcon)" SelectCommand="SELECT * FROM [Routes]" UpdateCommand="UPDATE [Routes] SET [AircraftId] = @AircraftId, [Origin] = @Origin, [Layover] = @Layover, [Destination] = @Destination, [M] = @M, [T] = @T, [W] = @W, [TH] = @TH, [F] = @F, [SA] = @SA, [SU] = @SU, [Price] = @Price, [DepartTime] = @DepartTime, [LayoverTime] = @LayoverTime, [ArrivalTime] = @ArrivalTime, [SeatsTakenFC] = @SeatsTakenFC, [SeatsTakenEcon] = @SeatsTakenEcon WHERE [FlightId] = @FlightId">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IowaAirDB %>" DeleteCommand="DELETE FROM [Routes] WHERE [FlightId] = @FlightId" InsertCommand="INSERT INTO [Routes] ([AircraftId], [Origin], [Layover], [Destination], [M], [T], [W], [TH], [F], [SA], [SU], [PriceFC], [PriceEcon], [DepartTime], [LayoverTime], [ArrivalTime], [SeatsTakenFC], [SeatsTakenEcon]) VALUES (@AircraftId, @Origin, @Layover, @Destination, @M, @T, @W, @TH, @F, @SA, @SU, @PriceFC, @PriceEcon, @DepartTime, @LayoverTime, @ArrivalTime, @SeatsTakenFC, @SeatsTakenEcon)" SelectCommand="SELECT * FROM [Routes]" UpdateCommand="UPDATE [Routes] SET [Origin] = @Origin, [Layover] = @Layover, [Destination] = @Destination, [M] = @M, [T] = @T, [W] = @W, [TH] = @TH, [F] = @F, [SA] = @SA, [SU] = @SU, [PriceFC] = @PriceFC, [PriceEcon] = @PriceEcon  [DepartTime] = @DepartTime, [LayoverTime] = @LayoverTime, [ArrivalTime] = @ArrivalTime, [SeatsTakenFC] = @SeatsTakenFC, [SeatsTakenEcon] = @SeatsTakenEcon WHERE [FlightId] = @FlightId">
                 <DeleteParameters>
                     <asp:Parameter Name="FlightId" Type="Int32" />
                 </DeleteParameters>
@@ -194,7 +201,8 @@
                     <asp:Parameter Name="F" Type="Boolean" />
                     <asp:Parameter Name="SA" Type="Boolean" />
                     <asp:Parameter Name="SU" Type="Boolean" />
-                    <asp:Parameter Name="Price" Type="Int32" />
+                    <asp:Parameter Name="PriceFC" Type="Int32" />
+                    <asp:Parameter Name="PriceEcon" Type="Int32" />
                     <asp:Parameter Name="DepartTime" Type="String" />
                     <asp:Parameter Name="LayoverTime" Type="String" />
                     <asp:Parameter Name="ArrivalTime" Type="String" />
@@ -213,7 +221,8 @@
                     <asp:Parameter Name="F" Type="Boolean" />
                     <asp:Parameter Name="SA" Type="Boolean" />
                     <asp:Parameter Name="SU" Type="Boolean" />
-                    <asp:Parameter Name="Price" Type="Int32" />
+                    <asp:Parameter Name="PriceFC" Type="Int32" />
+                    <asp:Parameter Name="PriceEcon" Type="Int32" />
                     <asp:Parameter Name="DepartTime" Type="String" />
                     <asp:Parameter Name="LayoverTime" Type="String" />
                     <asp:Parameter Name="ArrivalTime" Type="String" />
@@ -225,7 +234,7 @@
             <asp:GridView ID="routesGridView" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="OnPaging" AutoGenerateEditButton="True" DataKeyNames="FlightId" DataSourceID="SqlDataSource1" CssClass="GridView" AutoGenerateDeleteButton="True">
             <Columns>
                 <asp:BoundField ItemStyle-Width="150px" DataField="FlightId" HeaderText="FlightId" InsertVisible="False" ReadOnly="True" SortExpression="FlightId" />
-                <asp:BoundField ItemStyle-Width="150px" DataField="AircraftId" HeaderText="AircraftId" SortExpression="AircraftId" />
+                <asp:BoundField ItemStyle-Width="150px" DataField="AircraftId" HeaderText="AircraftId" InsertVisible="false" ReadOnly="true" SortExpression="AircraftId" />
                 <asp:BoundField ItemStyle-Width="150px" DataField="Origin" HeaderText="Origin" SortExpression="Origin" />
                 <asp:BoundField ItemStyle-Width="150px" DataField="Layover" HeaderText="Layover" SortExpression="Layover" />
                 <asp:BoundField ItemStyle-Width="150px" DataField="Destination" HeaderText="Destination" SortExpression="Destination" />
@@ -236,7 +245,8 @@
                 <asp:CheckBoxField DataField="F" HeaderText="F" SortExpression="F" />
                 <asp:CheckBoxField DataField="SA" HeaderText="SA" SortExpression="SA" />
                 <asp:CheckBoxField DataField="SU" HeaderText="SU" SortExpression="SU" />
-                <asp:BoundField ItemStyle-Width="150px" DataField="Price" HeaderText="Price" SortExpression="Price" />
+                <asp:BoundField ItemStyle-Width="150px" DataField="PriceFC" HeaderText="Price First Class" SortExpression="PriceFC" />
+                <asp:BoundField ItemStyle-Width="150px" DataField="PriceEcon" HeaderText="Price Economy" SortExpression="PriceEcon" />
                 <asp:BoundField ItemStyle-Width="150px" DataField="DepartTime" HeaderText="DepartTime" SortExpression="DepartTime" />
                 <asp:BoundField ItemStyle-Width="150px" DataField="LayoverTime" HeaderText="LayoverTime" SortExpression="LayoverTime" />
                 <asp:BoundField ItemStyle-Width="150px" DataField="ArrivalTime" HeaderText="ArrivalTime" SortExpression="ArrivalTime" />
