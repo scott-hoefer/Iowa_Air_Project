@@ -63,15 +63,6 @@ namespace WebApplication1
 
         protected void bookFCBtn_Click(object sender, EventArgs e)
         {
-            //int rid = (int)Session["SelectedReturnFlight"];
-            //int id = (int)Session["SelectedFlight"];
-            //System.Diagnostics.Debug.WriteLine("rid = " + rid);
-            //con.Open();
-            //cmd = con.CreateCommand();
-            //cmd.CommandType = CommandType.Text;
-            //cmd.CommandText = "insert into Reservations values('" + id + "' , '" + nameTxtBox.Text + "' , '" + DBNull.Value + "' , '" + DBNull.Value + "' , '" + DBNull.Value + "' , '" + rid + "' , '" + 1 + "')";
-            //cmd.ExecuteNonQuery();
-            //con.Close();
             Response.Redirect("EnterBookingInfo.aspx");
         }
 
