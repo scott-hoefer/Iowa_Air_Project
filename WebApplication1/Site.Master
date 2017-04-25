@@ -37,8 +37,6 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-    </asp:ContentPlaceHolder>
 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -77,6 +75,8 @@
             </div>
         </div>
         <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Team06 ASP.NET Application</p>
