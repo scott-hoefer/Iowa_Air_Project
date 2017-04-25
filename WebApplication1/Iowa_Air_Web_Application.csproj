@@ -209,6 +209,7 @@
   <ItemGroup>
     <Content Include="Admin\AdminPage.aspx" />
     <Content Include="BookAFlight.aspx" />
+    <Content Include="BookingInfo.aspx" />
     <Content Include="empAcctCreation.aspx" />
     <Content Include="App_Data\dbo.Table.sql" />
     <Content Include="App_Data\IowaAirDatabase.mdf" />
@@ -418,6 +419,13 @@
     </Compile>
     <Compile Include="BookAFlight.aspx.designer.cs">
       <DependentUpon>BookAFlight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BookingInfo.aspx.cs">
+      <DependentUpon>BookingInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookingInfo.aspx.designer.cs">
+      <DependentUpon>BookingInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="empAcctCreation.aspx.cs">
       <DependentUpon>empAcctCreation.aspx</DependentUpon>

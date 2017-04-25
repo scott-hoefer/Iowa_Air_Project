@@ -32,7 +32,7 @@ namespace WebApplication1
 
             newPanel.Controls.Add(newLabel);
             newPanel.Controls.Add(newTextBox);
-            form1.Controls.Add(newPanel);
+            //form1.Controls.Add(newPanel);
         }
     }
 }
