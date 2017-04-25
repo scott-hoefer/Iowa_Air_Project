@@ -14,7 +14,6 @@ namespace WebApplication1
     {
         DateTime departDay, returnDay;
         int depDay, reDay;
-        Boolean roundTrip = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -27,13 +26,17 @@ namespace WebApplication1
             int.TryParse(idText, out id);
             //System.Diagnostics.Debug.WriteLine(id);
             Session["SelectedFlight"] = id;
-            System.Diagnostics.Debug.WriteLine("round trip? " + roundTrip);
-            if (!roundTrip)
+            System.Diagnostics.Debug.WriteLine("round trip? " + (Boolean)ViewState["roundTrip"]);
+            ViewState["departSelected"] = true;
+            System.Diagnostics.Debug.WriteLine("depart selected = " + (Boolean)ViewState["departSelected"]);
+            System.Diagnostics.Debug.WriteLine("return selected = " + (Boolean)ViewState["returnSelected"]);
+            if (!(Boolean)ViewState["roundTrip"])
             {
-                if (!Page.IsPostBack)
-                {
-                    Response.Redirect("BookAFlight.aspx");
-                }
+                Response.Redirect("BookAFlight.aspx");
+            }
+            if ((Boolean)ViewState["returnSelected"] && (Boolean)ViewState["departSelected"])
+            {
+                Response.Redirect("BookAFlight.aspx");
             }
         }
 
@@ -45,11 +48,27 @@ namespace WebApplication1
             int.TryParse(idText, out RId);
             //System.Diagnostics.Debug.WriteLine(id);
             Session["SelectedReturnFlight"] = RId;
-            Response.Redirect("BookAFlight.aspx");
+            ViewState["returnSelected"] = true;
+            System.Diagnostics.Debug.WriteLine("depart selected = " + ViewState["returnSelected"]);
+            System.Diagnostics.Debug.WriteLine("return selected = " + ViewState["departSelected"]);
+            if ((Boolean)ViewState["returnSelected"] && (Boolean)ViewState["departSelected"])
+            {
+                Response.Redirect("BookAFlight.aspx");
+            }
         }
 
         protected void searchBtn_Click(object sender, EventArgs e)
         {
+            ViewState["roundTrip"] = false;
+            ViewState["returnSelected"] = false;
+            ViewState["departSelected"] = false;
+            int numTickets;
+            int.TryParse(numPassengers.Text, out numTickets);
+            if(numTickets < 1)
+            {
+                numTickets = 1;
+            }
+            Session["numPassengers"] = numTickets;
             // get the 2 days of the week, leaving and returning
             if (DateTime.TryParse(departDate.Text, out departDay))
             {
@@ -62,9 +81,10 @@ namespace WebApplication1
             }
             if (DateTime.TryParse(returnDate.Text, out returnDay))
             {
-                roundTrip = true;
+                ViewState["roundTrip"] = true;
                 reDay = (int)returnDay.DayOfWeek;
                 Session["ReturnDate"] = reDay;
+                System.Diagnostics.Debug.WriteLine("roundTrip set = " + (Boolean)ViewState["roundTrip"]);
             } else
             {
                 reDay = 0;
