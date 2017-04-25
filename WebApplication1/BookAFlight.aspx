@@ -1,10 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookAFlight.aspx.cs" Inherits="WebApplication1.BookAFlight" %>
-
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
  
 <div style="display: block; text-align: center; font-size:xx-large; padding-top:30px" >Book Your Next Adventure Now </div>
-<div style="display: block; text-align: center; font-size:medium; padding-top:30px; padding-bottom:10px">
+<div>
     <asp:Label ID="bookingLbl" runat="server" Visible="false" AssociatedControlID="bookFlightGrd" >Book Flight</asp:Label>
     <asp:GridView ID="bookFlightGrd" runat="server" CellPadding="10" ForeColor="#333333" GridLines="None" Visible="true" HorizontalAlign="Center">
         <AlternatingRowStyle BackColor="White" />
@@ -35,12 +33,9 @@
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>
-    </div>
 
-    <div style="display: block; text-align: center; font-size:medium; padding-top:30px; padding-bottom:10px">
-        <asp:Label ID="FCTotalLbl" runat="server" AssociatedControlID="bookFCBtn"></asp:Label>
-        <asp:Button ID="bookFCBtn" runat="server" Text="Book a FIRST CLASS Flight" CssClass="btn btn-default" OnClientClick="return confirm('Are you sure you want to purchase First Class Ticket(s)?')" OnClick="bookFCBtn_Click" />
-        <asp:Label ID="EconTotalLbl" runat="server" AssociatedControlID="bookEconBtn"></asp:Label>
-        <asp:Button ID="bookEconBtn" runat="server" Text="Book an ECONOMY Flight" CssClass="btn btn-default" OnClientClick="return confirm('Are you sure you want to purchase First Class Ticket(s)?')" OnClick="bookEconBtn_Click" />
+
+        
+    <asp:Button ID="bookBtn" runat="server" Text="Book Flight" CssClass="btn btn-default" OnClick="bookBtn_Click" />
     </div>
 </asp:Content>

@@ -49,39 +49,12 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.GridView returnFlightGrd;
         
         /// <summary>
-        /// FCTotalLbl control.
+        /// bookBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FCTotalLbl;
-        
-        /// <summary>
-        /// bookFCBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bookFCBtn;
-        
-        /// <summary>
-        /// EconTotalLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EconTotalLbl;
-        
-        /// <summary>
-        /// bookEconBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bookEconBtn;
+        protected global::System.Web.UI.WebControls.Button bookBtn;
     }
 }
