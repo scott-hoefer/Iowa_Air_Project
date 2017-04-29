@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookAFlight.aspx.cs" Inherits="WebApplication1.BookAFlight" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookAFlight.aspx.cs" Inherits="WebApplication1.BookAFlight"  Async="true"%>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -6,6 +6,7 @@
 <div style="display: block; text-align: center; font-size:xx-large; padding-top:30px" >Book Your Next Adventure Now </div>
 <div style="display: block; text-align: center; font-size:medium; padding-top:30px; padding-bottom:10px">
     <asp:Label ID="bookingLbl" runat="server" Visible="false" AssociatedControlID="bookFlightGrd" >Book Flight</asp:Label>
+    <asp:Label ID="warningLbl" runat="server" Text="<u>Must Be Logged In And Have Your Email Confirmed</u>" ForeColor="Red" Visible="false"></asp:Label><br />
     <asp:GridView ID="bookFlightGrd" runat="server" CellPadding="10" ForeColor="#333333" GridLines="None" Visible="true" HorizontalAlign="Center">
         <AlternatingRowStyle BackColor="White" />
         <EditRowStyle BackColor="#2461BF" />

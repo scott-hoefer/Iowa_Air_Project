@@ -24,12 +24,21 @@ namespace WebApplication1
             String idText = searchResultsGrd.Rows[searchResultsGrd.SelectedIndex].Cells[1].Text;
             int id;
             int.TryParse(idText, out id);
+            DateTime departDateTime;
+            DateTime.TryParse(departDate.Text, out departDateTime);
+            Session["DepartDateTime"] = departDateTime;
             //System.Diagnostics.Debug.WriteLine(id);
             Session["SelectedFlight"] = id;
             System.Diagnostics.Debug.WriteLine("round trip? " + (Boolean)ViewState["roundTrip"]);
             ViewState["departSelected"] = true;
             System.Diagnostics.Debug.WriteLine("depart selected = " + (Boolean)ViewState["departSelected"]);
             System.Diagnostics.Debug.WriteLine("return selected = " + (Boolean)ViewState["returnSelected"]);
+            Session["DepartTime"] = searchResultsGrd.SelectedRow.Cells[7].Text;
+            Session["DepartArrivalTime"] = searchResultsGrd.SelectedRow.Cells[9].Text;
+            Session["DepartLayoverTimes"] = searchResultsGrd.SelectedRow.Cells[8].Text;
+            System.Diagnostics.Debug.WriteLine("DepartTime = " + searchResultsGrd.SelectedRow.Cells[7].Text);
+            System.Diagnostics.Debug.WriteLine("DepartArrivalTime = " + searchResultsGrd.SelectedRow.Cells[9].Text);
+            System.Diagnostics.Debug.WriteLine("DepartLayoverTime = " + searchResultsGrd.SelectedRow.Cells[8].Text);
             if (!(Boolean)ViewState["roundTrip"])
             {
                 Response.Redirect("BookAFlight.aspx");
@@ -43,14 +52,20 @@ namespace WebApplication1
         // selecting a return flight
         protected void returnFlightGrd_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             String idText = returnFlightGrd.Rows[returnFlightGrd.SelectedIndex].Cells[1].Text;
             int RId;
             int.TryParse(idText, out RId);
+            DateTime returnDateTime;
+            DateTime.TryParse(returnDate.Text, out returnDateTime);
             //System.Diagnostics.Debug.WriteLine(id);
             Session["SelectedReturnFlight"] = RId;
             ViewState["returnSelected"] = true;
             System.Diagnostics.Debug.WriteLine("depart selected = " + ViewState["returnSelected"]);
             System.Diagnostics.Debug.WriteLine("return selected = " + ViewState["departSelected"]);
+            Session["ReturnTime"] = returnFlightGrd.SelectedRow.Cells[7].Text;
+            Session["ReturnLayoverTimes"] = returnFlightGrd.SelectedRow.Cells[8].Text;
+            Session["ReturnArrivalTime"] = returnFlightGrd.SelectedRow.Cells[9].Text;
             if ((Boolean)ViewState["returnSelected"] && (Boolean)ViewState["departSelected"])
             {
                 Response.Redirect("BookAFlight.aspx");
@@ -74,6 +89,8 @@ namespace WebApplication1
             {
                 depDay = (int)departDay.DayOfWeek;
                 System.Diagnostics.Debug.WriteLine("depDay value =" + depDay);
+                Session["DepartureDateTime"] = departDay;
+                System.Diagnostics.Debug.WriteLine("DepartureDateTime = " + departDay);
             } else
             {
                 noDepartDateLbl.Visible = true;
@@ -84,7 +101,8 @@ namespace WebApplication1
                 ViewState["roundTrip"] = true;
                 reDay = (int)returnDay.DayOfWeek;
                 Session["ReturnDate"] = reDay;
-                System.Diagnostics.Debug.WriteLine("roundTrip set = " + (Boolean)ViewState["roundTrip"]);
+                Session["ReturnDateTime"] = returnDay;
+                System.Diagnostics.Debug.WriteLine("ReturnDateTime = " + returnDay);
             } else
             {
                 reDay = 0;

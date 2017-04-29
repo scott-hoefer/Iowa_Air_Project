@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -63,12 +65,22 @@ namespace WebApplication1
 
         protected void bookFCBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("EnterBookingInfo.aspx");
+            string id = User.Identity.GetUserId();
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                Session["whichClass"] = 1;
+                Response.Redirect("EnterBookingInfo.aspx");
+            }
+            else
+            {
+                warningLbl.Visible = true;
+            }
         }
 
         protected void bookEconBtn_Click(object sender, EventArgs e)
         {
-
+            Session["whichClass"] = 0;
+            Response.Redirect("EnterBookingInfo.aspx");
         }
     }
 }

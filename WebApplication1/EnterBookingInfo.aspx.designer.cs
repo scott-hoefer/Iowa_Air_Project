@@ -13,6 +13,24 @@ namespace WebApplication1 {
     public partial class EnterBookingInfo {
         
         /// <summary>
+        /// confirmBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button confirmBtn;
+        
+        /// <summary>
+        /// namesWarningLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label namesWarningLbl;
+        
+        /// <summary>
         /// lbl1 control.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox1;
+        
+        /// <summary>
+        /// DOBLbl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl1;
+        
+        /// <summary>
+        /// DOBBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox1;
         
         /// <summary>
         /// lbl2 control.
@@ -49,6 +85,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox2;
         
         /// <summary>
+        /// DOBLbl2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl2;
+        
+        /// <summary>
+        /// DOBBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox2;
+        
+        /// <summary>
         /// lbl3 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +119,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox3;
+        
+        /// <summary>
+        /// DOBLbl3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl3;
+        
+        /// <summary>
+        /// DOBBox3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox3;
         
         /// <summary>
         /// lbl4 control.
@@ -85,6 +157,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox4;
         
         /// <summary>
+        /// DOBLbl4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl4;
+        
+        /// <summary>
+        /// DOBBox4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox4;
+        
+        /// <summary>
         /// lbl5 control.
         /// </summary>
         /// <remarks>
@@ -101,6 +191,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox5;
+        
+        /// <summary>
+        /// DOBLbl5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl5;
+        
+        /// <summary>
+        /// DOBBox5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox5;
         
         /// <summary>
         /// lbl6 control.
@@ -121,6 +229,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox6;
         
         /// <summary>
+        /// DOBLbl6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl6;
+        
+        /// <summary>
+        /// DOBBox6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox6;
+        
+        /// <summary>
         /// lbl7 control.
         /// </summary>
         /// <remarks>
@@ -137,6 +263,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox7;
+        
+        /// <summary>
+        /// DOBLbl7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl7;
+        
+        /// <summary>
+        /// DOBBox7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox7;
         
         /// <summary>
         /// lbl8 control.
@@ -157,6 +301,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox8;
         
         /// <summary>
+        /// DOBLbl8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl8;
+        
+        /// <summary>
+        /// DOBBox8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox8;
+        
+        /// <summary>
         /// lbl9 control.
         /// </summary>
         /// <remarks>
@@ -173,6 +335,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox9;
+        
+        /// <summary>
+        /// DOBLbl9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl9;
+        
+        /// <summary>
+        /// DOBBox9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox9;
         
         /// <summary>
         /// lbl10 control.
@@ -193,6 +373,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox10;
         
         /// <summary>
+        /// DOBLbl10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl10;
+        
+        /// <summary>
+        /// DOBBox10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox10;
+        
+        /// <summary>
         /// lbl11 control.
         /// </summary>
         /// <remarks>
@@ -209,6 +407,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox11;
+        
+        /// <summary>
+        /// DOBLbl11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl11;
+        
+        /// <summary>
+        /// DOBBox11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox11;
         
         /// <summary>
         /// lbl12 control.
@@ -229,6 +445,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox12;
         
         /// <summary>
+        /// DOBLbl12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl12;
+        
+        /// <summary>
+        /// DOBBox12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox12;
+        
+        /// <summary>
         /// lbl13 control.
         /// </summary>
         /// <remarks>
@@ -245,6 +479,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox13;
+        
+        /// <summary>
+        /// DOBLbl13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl13;
+        
+        /// <summary>
+        /// DOBBox13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox13;
         
         /// <summary>
         /// lbl14 control.
@@ -265,6 +517,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox14;
         
         /// <summary>
+        /// DOBLbl14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl14;
+        
+        /// <summary>
+        /// DOBBox14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox14;
+        
+        /// <summary>
         /// lbl15 control.
         /// </summary>
         /// <remarks>
@@ -281,6 +551,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox15;
+        
+        /// <summary>
+        /// DOBLbl15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl15;
+        
+        /// <summary>
+        /// DOBBox15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox15;
         
         /// <summary>
         /// lbl16 control.
@@ -301,6 +589,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox16;
         
         /// <summary>
+        /// DOBLbl16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl16;
+        
+        /// <summary>
+        /// DOBBox16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox16;
+        
+        /// <summary>
         /// lbl17 control.
         /// </summary>
         /// <remarks>
@@ -317,6 +623,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox17;
+        
+        /// <summary>
+        /// DOBLbl17 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl17;
+        
+        /// <summary>
+        /// DOBBox17 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox17;
         
         /// <summary>
         /// lbl18 control.
@@ -337,6 +661,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox18;
         
         /// <summary>
+        /// DOBLbl18 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl18;
+        
+        /// <summary>
+        /// DOBBox18 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox18;
+        
+        /// <summary>
         /// lbl19 control.
         /// </summary>
         /// <remarks>
@@ -353,6 +695,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textbox19;
+        
+        /// <summary>
+        /// DOBLbl19 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DOBLbl19;
+        
+        /// <summary>
+        /// DOBBox19 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox19;
         
         /// <summary>
         /// lbl20 control.
@@ -373,12 +733,21 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox textbox20;
         
         /// <summary>
-        /// confirmBtn control.
+        /// DOBLbl20 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button confirmBtn;
+        protected global::System.Web.UI.WebControls.Label DOBLbl20;
+        
+        /// <summary>
+        /// DOBBox20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DOBBox20;
     }
 }
