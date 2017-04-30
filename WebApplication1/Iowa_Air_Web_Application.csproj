@@ -217,7 +217,6 @@
   <ItemGroup>
     <Content Include="Admin\AdminPage.aspx" />
     <Content Include="BookAFlight.aspx" />
-    <Content Include="BookingComplete.aspx" />
     <Content Include="BookingInfo.aspx" />
     <Content Include="empAcctCreation.aspx" />
     <Content Include="App_Data\dbo.Table.sql" />
@@ -429,13 +428,6 @@
     </Compile>
     <Compile Include="BookAFlight.aspx.designer.cs">
       <DependentUpon>BookAFlight.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BookingComplete.aspx.cs">
-      <DependentUpon>BookingComplete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BookingComplete.aspx.designer.cs">
-      <DependentUpon>BookingComplete.aspx</DependentUpon>
     </Compile>
     <Compile Include="BookingInfo.aspx.cs">
       <DependentUpon>BookingInfo.aspx</DependentUpon>

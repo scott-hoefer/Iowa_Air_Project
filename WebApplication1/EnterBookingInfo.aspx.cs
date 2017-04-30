@@ -4,8 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Web.Mail;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -19,11 +17,9 @@ namespace WebApplication1
         List<Label> labels = new List<Label>();
         List<TextBox> dobBoxes = new List<TextBox>();
         List<Label> dobLabels = new List<Label>();
-        List<string> names = new List<string>();
-        int numPass;
         protected void Page_Load(object sender, EventArgs e)
         {
-            numPass = Convert.ToInt16(Session["numPassengers"]);
+            int numPass = Convert.ToInt16(Session["numPassengers"]);
             textboxes.Add(textbox1);
             textboxes.Add(textbox2);
             textboxes.Add(textbox3);
@@ -105,7 +101,6 @@ namespace WebApplication1
             dobLabels.Add(DOBLbl20);
             if (!Page.IsPostBack)
             {
-                Session["CustomerNames"] = "";
                 for (int i=0; i < numPass; i++)
                 {
                     textboxes[i].Visible = true;
@@ -134,16 +129,9 @@ namespace WebApplication1
                     DateTime dob;
                     DateTime.TryParse(dobBoxes[i].Text, out dob);
                     System.Diagnostics.Debug.WriteLine("dob = " + dob);
-                    Session["CustomerNames"] = (string)Session["CustomerNames"] + tb.Text + ", ";
                     addToDB(tb, dob);
                 }
             }
-            string cusNames = "";
-            for (int i = 0; i < numPass; i++)
-            {
-                cusNames = cusNames + names[i] + ", ";
-            }
-            Session["NamesList"] = names;
         }
 
         // add to database
@@ -161,68 +149,6 @@ namespace WebApplication1
             cmd.CommandText = "insert into Reservations values('" + id + "' , '" + TB.Text + "' , '" + dob + "' , '" + depart + "' , '" + returnDate + "' , '" + DBNull.Value + "' , '" + DBNull.Value + "' , '" + DBNull.Value + "' , '" + rid + "' , '" + seatType + "')";
             cmd.ExecuteNonQuery();
             con.Close();
-        }
-
-        public void SendMail()
-        {
-            string pGmailEmail = "iowaair06A@gmail.com";
-            string pGmailPassword = "Pword1234!";
-            string pTo = User.Identity.Name; //abc@domain.com
-            string pSubject = "Thanks For Your Purchase";
-            //string pBody = "Please click " + '<a runat='server' href='localhost:49384/EmailConfirmed'>Here</a>' + " to confirm your email."; //Body
-            MailFormat pFormat = MailFormat.Html; //Text Message
-            string pAttachmentPath = string.Empty; //No Attachments
-
-            System.Web.Mail.MailMessage myMail = new System.Web.Mail.MailMessage();
-            myMail.Fields.Add
-                ("http://schemas.microsoft.com/cdo/configuration/smtpserver",
-                              "smtp.gmail.com");
-            myMail.Fields.Add
-                ("http://schemas.microsoft.com/cdo/configuration/smtpserverport",
-                              "465");
-            myMail.Fields.Add
-                ("http://schemas.microsoft.com/cdo/configuration/sendusing",
-                              "2");
-            //sendusing: cdoSendUsingPort, value 2, for sending the message using 
-            //the network.
-
-            //smtpauthenticate: Specifies the mechanism used when authenticating 
-            //to an SMTP 
-            //service over the network. Possible values are:
-            //- cdoAnonymous, value 0. Do not authenticate.
-            //- cdoBasic, value 1. Use basic clear-text authentication. 
-            //When using this option you have to provide the user name and password 
-            //through the sendusername and sendpassword fields.
-            //- cdoNTLM, value 2. The current process security context is used to 
-            // authenticate with the service.
-            myMail.Fields.Add
-            ("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate", "1");
-            //Use 0 for anonymous
-            myMail.Fields.Add
-            ("http://schemas.microsoft.com/cdo/configuration/sendusername",
-                pGmailEmail);
-            myMail.Fields.Add
-            ("http://schemas.microsoft.com/cdo/configuration/sendpassword",
-                 pGmailPassword);
-            myMail.Fields.Add
-            ("http://schemas.microsoft.com/cdo/configuration/smtpusessl",
-                 "true");
-            myMail.From = pGmailEmail;
-            myMail.To = pTo;
-            myMail.Subject = pSubject;
-            myMail.BodyFormat = pFormat;
-            //myMail.Body = "Please click <a href=\"http://localhost:49384/EmailConfirmed.aspx\">here</a> to confirm your email.";
-            myMail.Body = "Thanks for choosing to fly Air Iowa! Please log onto your account to check flight details.";
-            if (pAttachmentPath.Trim() != "")
-            {
-                MailAttachment MyAttachment =
-                        new MailAttachment(pAttachmentPath);
-                myMail.Attachments.Add(MyAttachment);
-                myMail.Priority = System.Web.Mail.MailPriority.High;
-            }
-
-            SmtpMail.SmtpServer = "smtp.gmail.com:465";
-            SmtpMail.Send(myMail);
         }
     }
 }

@@ -66,7 +66,7 @@ namespace WebApplication1
         protected void bookFCBtn_Click(object sender, EventArgs e)
         {
             string id = User.Identity.GetUserId();
-            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated && isEmailConfirmed())
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 Session["whichClass"] = 1;
                 Response.Redirect("EnterBookingInfo.aspx");
@@ -79,44 +79,8 @@ namespace WebApplication1
 
         protected void bookEconBtn_Click(object sender, EventArgs e)
         {
-            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated && isEmailConfirmed())
-            {
-                Session["whichClass"] = 0;
-                Response.Redirect("EnterBookingInfo.aspx");
-            }
-            else
-            {
-                warningLbl.Visible = true;
-            }
-        }
-
-        protected bool isEmailConfirmed()
-        {
-            
-            using (SqlConnection con2 = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DefaultConnection;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
-            {
-                using (SqlCommand command = new SqlCommand("Select EmailConfirmed from AspNetUsers", con2))
-                {
-                    con2.Open();
-                    using (SqlDataReader rdr = command.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            Session["isConfirmed"] = rdr["emailConfirmed"].ToString();
-                            System.Diagnostics.Debug.WriteLine("isConfirmed = " + (string)Session["isConfirmed"]);
-
-                        }
-                    }
-                }
-            }
-            if ((string)Session["isConfirmed"] == "True")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            Session["whichClass"] = 0;
+            Response.Redirect("EnterBookingInfo.aspx");
         }
     }
 }

@@ -42,6 +42,6 @@
         <asp:Label ID="FCTotalLbl" runat="server" AssociatedControlID="bookFCBtn"></asp:Label>
         <asp:Button ID="bookFCBtn" runat="server" Text="Book a FIRST CLASS Flight" CssClass="btn btn-default" OnClientClick="return confirm('Are you sure you want to purchase First Class Ticket(s)?')" OnClick="bookFCBtn_Click" />
         <asp:Label ID="EconTotalLbl" runat="server" AssociatedControlID="bookEconBtn"></asp:Label>
-        <asp:Button ID="bookEconBtn" runat="server" Text="Book an ECONOMY Flight" CssClass="btn btn-default" OnClientClick="return confirm('Are you sure you want to purchase Economy Ticket(s)?')" OnClick="bookEconBtn_Click" />
+        <asp:Button ID="bookEconBtn" runat="server" Text="Book an ECONOMY Flight" CssClass="btn btn-default" OnClientClick="return confirm('Are you sure you want to purchase First Class Ticket(s)?')" OnClick="bookEconBtn_Click" />
     </div>
 </asp:Content>
