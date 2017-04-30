@@ -19,9 +19,11 @@ namespace WebApplication1
         List<Label> labels = new List<Label>();
         List<TextBox> dobBoxes = new List<TextBox>();
         List<Label> dobLabels = new List<Label>();
+        List<string> names = new List<string>();
+        int numPass;
         protected void Page_Load(object sender, EventArgs e)
         {
-            int numPass = Convert.ToInt16(Session["numPassengers"]);
+            numPass = Convert.ToInt16(Session["numPassengers"]);
             textboxes.Add(textbox1);
             textboxes.Add(textbox2);
             textboxes.Add(textbox3);
@@ -103,6 +105,7 @@ namespace WebApplication1
             dobLabels.Add(DOBLbl20);
             if (!Page.IsPostBack)
             {
+                Session["CustomerNames"] = "";
                 for (int i=0; i < numPass; i++)
                 {
                     textboxes[i].Visible = true;
@@ -131,11 +134,16 @@ namespace WebApplication1
                     DateTime dob;
                     DateTime.TryParse(dobBoxes[i].Text, out dob);
                     System.Diagnostics.Debug.WriteLine("dob = " + dob);
+                    Session["CustomerNames"] = (string)Session["CustomerNames"] + tb.Text + ", ";
                     addToDB(tb, dob);
                 }
             }
-            SendMail();
-            Response.Redirect("BookingComplete.aspx");
+            string cusNames = "";
+            for (int i = 0; i < numPass; i++)
+            {
+                cusNames = cusNames + names[i] + ", ";
+            }
+            Session["NamesList"] = names;
         }
 
         // add to database
