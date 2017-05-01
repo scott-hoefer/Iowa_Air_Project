@@ -29,6 +29,9 @@ namespace WebApplication1
             seatLbl.Visible = true;
             seatTxtbox.Visible = true;
             checkInBtn.Visible = true;
+            cancelTxt.Visible = true;
+            cancelLbl.Visible = true;
+            cancelBtn.Visible = true;
         }
 
         protected void searchPassBtn_Click(object sender, EventArgs e)
@@ -40,6 +43,15 @@ namespace WebApplication1
             da.Fill(ds);
             searchPassGrd.DataSource = ds;
             searchPassGrd.DataBind();
+            if (searchPassGrd.Rows.Count == 0)
+            {
+                //warningLbl3.Visible = true;
+                searchPassGrdLbl.Text = "No Reservations Found";
+            }
+            else
+            {
+                searchPassGrdLbl.Text = "Reservations Found:";
+            }
 
             searchPassGrd.Visible = true;
             searchPassGrdLbl.Visible = true;
@@ -47,40 +59,47 @@ namespace WebApplication1
 
         protected void checkInBtn_Click(object sender, EventArgs e)
         {
-            int resID, carryOn, checkedBags; 
-            int.TryParse(ViewState["ResId"].ToString(), out resID);
-            int.TryParse(carryOnTxtbox.Text, out carryOn);
-            int.TryParse(checkedTxtbox.Text, out checkedBags);
-            ViewState["checked"] = checkedBags;
-            ViewState["carryOn"] = carryOn;
-            // get section for the boarding pass
-            using (con)
+            if (flightIdTxt.Text == "" || checkedTxtbox.Text == "" || carryOnTxtbox.Text == "" || seatTxtbox.Text == "")
             {
-                using (SqlCommand command = new SqlCommand("Select FirstClass from Reservations where ResId = '" + resID + "' ", con))
+                warningLbl.Visible = true;
+            }
+            else
+            {
+                int resID, carryOn, checkedBags;
+                int.TryParse(ViewState["ResId"].ToString(), out resID);
+                int.TryParse(carryOnTxtbox.Text, out carryOn);
+                int.TryParse(checkedTxtbox.Text, out checkedBags);
+                ViewState["checked"] = checkedBags;
+                ViewState["carryOn"] = carryOn;
+                // get section for the boarding pass
+                using (con)
                 {
-                    con.Open();
-                    using (SqlDataReader rdr = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand("Select FirstClass from Reservations where ResId = '" + resID + "' ", con))
                     {
-                        while (rdr.Read())
+                        con.Open();
+                        using (SqlDataReader rdr = command.ExecuteReader())
                         {
-                            Session["section"] = rdr[0].ToString();
+                            while (rdr.Read())
+                            {
+                                Session["section"] = rdr[0].ToString();
+                            }
                         }
                     }
                 }
+                SqlConnection con2 = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-WebApplication1-20170209101639;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                System.Diagnostics.Debug.WriteLine("section = " + Session["section"].ToString());
+                // update database
+                con2.Open();
+                SqlCommand cmd2;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                String sql = " Update Reservations set CheckedBags = '" + checkedBags + "' , CarryOnBags = '" + carryOn + "', SeatNum = '" + seatTxtbox.Text + "' where ResId = '" + resID + "' ";
+                cmd2 = new SqlCommand(sql, con2);
+                adapter.UpdateCommand = new SqlCommand(sql, con2);
+                adapter.UpdateCommand.ExecuteNonQuery();
+                cmd2.Dispose();
+                con2.Close();
+                generatePDF();
             }
-            SqlConnection con2 = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-WebApplication1-20170209101639;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            System.Diagnostics.Debug.WriteLine("section = " + Session["section"].ToString());
-            // update database
-            con2.Open();
-            SqlCommand cmd2;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            String sql = " Update Reservations set CheckedBags = '" + checkedBags + "' , CarryOnBags = '"+ carryOn +"', SeatNum = '"+seatTxtbox.Text+"' where ResId = '"+ resID +"' ";
-            cmd2 = new SqlCommand(sql, con2);
-            adapter.UpdateCommand = new SqlCommand(sql, con2);
-            adapter.UpdateCommand.ExecuteNonQuery();
-            cmd2.Dispose();
-            con.Close();
-            generatePDF();
         }
 
         private void generatePDF()
@@ -113,6 +132,31 @@ namespace WebApplication1
             }
             catch (Exception ex)
             { Response.Write(ex.Message); }
+        }
+
+        protected void cancelBtn_Click(object sender, EventArgs e)
+        {
+            if (cancelTxt.Text == "")
+            {
+                warningLbl2.Visible = true;
+            }
+            else
+            {
+                int resid;
+                int.TryParse(ViewState["ResId"].ToString(), out resid);
+                System.Diagnostics.Debug.WriteLine("delete resid = " + resid);
+                SqlConnection con3 = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-WebApplication1-20170209101639;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                con3.Open();
+                SqlCommand cmd3;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                String sql = "Delete from Reservations where ResId = '" + resid + "'";
+                cmd3 = new SqlCommand(sql, con3);
+                adapter.DeleteCommand = new SqlCommand(sql, con3);
+                adapter.DeleteCommand.ExecuteNonQuery();
+                cmd3.Dispose();
+                con3.Close();
+            }
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

@@ -116,7 +116,7 @@
                 </asp:DropDownList><br />
             </div>
 
-            <asp:Label runat="server" AssociatedControlID="routeAircraft" CssClass="col-md-2 control-label">Select Idol Aircraft</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="routeAircraft" CssClass="col-md-2 control-label">Select Idle Aircraft</asp:Label>
             <div class="col-md-10">
                 <asp:DropDownList ID="routeAircraft" runat="server" Width="200px" CssClass="form-control">
                 </asp:DropDownList><br />
@@ -173,7 +173,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Label ID="routeSuccessful" runat="server" AssociatedControlId="addRouteBtn" Text="Route Successfully" ForeColor="Red" Visible="false"></asp:Label><br />
+                <asp:Label ID="routeSuccessful" runat="server" AssociatedControlId="addRouteBtn" Text="Route Successfully Added" ForeColor="Red" Visible="false"></asp:Label><br />
                 <asp:Button ID="addRouteBtn" runat="server" Text="Add Route" OnClick="addRoute_Click" CausesValidation="false" CssClass="btn btn-default" />
             </div>
         </div>

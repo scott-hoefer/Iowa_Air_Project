@@ -74,6 +74,102 @@ namespace WebApplication1
 
         protected void searchBtn_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("origin city = " + originCity.SelectedItem.Text);
+            if (originCity.SelectedItem.Text == "Iowa City")
+            {
+                if (destinationCity.SelectedItem.Text == "Chicago")
+                {
+                    ic_to_chi.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "Atlanta")
+                {
+                    ic_to_atl.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "New York")
+                {
+                    ic_to_ny.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "San Francisco")
+                {
+                    ic_to_sf.Visible = true;
+                }
+            }
+            if (originCity.SelectedItem.Text == "Chicago")
+            {
+                if (destinationCity.SelectedItem.Text == "Iowa City")
+                {
+                    chi_to_ic.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "Atlanta")
+                {
+                    chi_to_atl.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "New York")
+                {
+                    chi_to_ny.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "San Francisco")
+                {
+                    chi_to_sf.Visible = true;
+                }
+            }
+            if (originCity.SelectedItem.Text == "New York")
+            {
+                if (destinationCity.SelectedItem.Text == "Iowa City")
+                {
+                    ny_to_ic.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "Atlanta")
+                {
+                    ny_to_atl.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "Chicago")
+                {
+                    ny_to_chi.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "San Francisco")
+                {
+                    ny_to_sf.Visible = true;
+                }
+            }
+            if (originCity.SelectedItem.Text == "Atlanta")
+            {
+                if (destinationCity.SelectedItem.Text == "Iowa City")
+                {
+                    atl_to_ic.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "New York")
+                {
+                    atl_to_ny.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "Chicago")
+                {
+                    atl_to_chi.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "San Francisco")
+                {
+                    atl_to_sf.Visible = true;
+                }
+            }
+            if (originCity.SelectedItem.Text == "San Francisco")
+            {
+                if (destinationCity.SelectedItem.Text == "Iowa City")
+                {
+                    sf_to_ic.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "New York")
+                {
+                    sf_to_ny.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "Chicago")
+                {
+                    sf_to_chi.Visible = true;
+                }
+                else if (destinationCity.SelectedItem.Text == "Atlanta")
+                {
+                    sf_to_atl.Visible = true;
+                }
+            }
             ViewState["roundTrip"] = false;
             ViewState["returnSelected"] = false;
             ViewState["departSelected"] = false;
