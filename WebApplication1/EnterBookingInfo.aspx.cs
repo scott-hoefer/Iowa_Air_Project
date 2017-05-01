@@ -138,14 +138,8 @@ namespace WebApplication1
                     addToDB(tb, dob);
                 }
             }
-            string cusNames = "";
-            for (int i = 0; i < numPass; i++)
-            {
-                cusNames = cusNames + names[i] + ", ";
-            }
-            Session["NamesList"] = names;
+            Response.Redirect("BookingComplete.aspx");
         }
-
         // add to database
         private void addToDB(TextBox TB, DateTime dob)
         {
@@ -155,10 +149,11 @@ namespace WebApplication1
             System.Diagnostics.Debug.WriteLine("rid = " + rid);
             DateTime depart = (DateTime)Session["DepartDateTime"];
             DateTime returnDate = (DateTime)Session["ReturnDateTime"];
+            System.Diagnostics.Debug.WriteLine("depart date ToShortDateString = " + depart.ToShortDateString());
             con.Open();
             cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into Reservations values('" + id + "' , '" + TB.Text + "' , '" + dob + "' , '" + depart + "' , '" + returnDate + "' , '" + DBNull.Value + "' , '" + DBNull.Value + "' , '" + DBNull.Value + "' , '" + rid + "' , '" + seatType + "')";
+            cmd.CommandText = "insert into Reservations values('" + id + "' , '" + TB.Text + "' , '" + dob.ToShortDateString() + "' , '" + depart.ToShortDateString() + "' , '" + returnDate.ToShortDateString() + "' , '" + DBNull.Value + "' , '" + DBNull.Value + "' , '" + DBNull.Value + "' , '" + rid + "' , '" + seatType + "')";
             cmd.ExecuteNonQuery();
             con.Close();
         }

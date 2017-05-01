@@ -89,7 +89,7 @@
     </div>
     <br />
     <br />
-    <div class="text-center">
+    <div class="text-center" >
             <h2>Cheap Flights To Five Different Cities In the US</h2>
             <p>
                 Iowa City, Chicago, New York, Atlanta and San Francisco
